@@ -590,7 +590,6 @@ public class PhysicsPanel extends JPanel implements Runnable {
         
         public void mouseDragged(MouseEvent e) {
             if(SwingUtilities.isRightMouseButton(e)) {
-                System.out.println("fuk");
                 return;
             }
             if(customBodyPoints.isEmpty())
