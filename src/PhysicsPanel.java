@@ -1,5 +1,7 @@
 /*
- * File added by Nathan MacLeod 2019
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,6 +14,7 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Scanner;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author Nathan
@@ -586,8 +589,10 @@ public class PhysicsPanel extends JPanel implements Runnable {
         public void mouseClicked(MouseEvent e) {}
         
         public void mouseDragged(MouseEvent e) {
-            if(e.isMetaDown())
+            if(SwingUtilities.isRightMouseButton(e)) {
+                System.out.println("fuk");
                 return;
+            }
             if(customBodyPoints.isEmpty())
                 customBodyPoints.add(new RigidBodyPoint(e.getX(), e.getY()));   
             else {
@@ -599,7 +604,7 @@ public class PhysicsPanel extends JPanel implements Runnable {
         
         public void mousePressed(MouseEvent e) {
             randomizeColorIfNececary();
-            if(e.isMetaDown()) { 
+            if(SwingUtilities.isRightMouseButton(e)) { 
                 if(customBodyPoints.size() > 2) {
                     RigidBodyPoint[] points = new RigidBodyPoint[customBodyPoints.size()];
                     for(int i = 0; i < points.length; i++) {
